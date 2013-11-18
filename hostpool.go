@@ -37,7 +37,7 @@ type HostPool interface {
 	Get() HostPoolResponse
 	ResetAll()
 	Hosts() []string
-	Init(hosts []string)
+	Assign(hosts []string)
 }
 
 type standardHostPool struct {
@@ -82,4 +82,9 @@ func (p *standardHostPool) Get() HostPoolResponse {
 
 func (p *standardHostPool) Hosts() []string {
 	return p.hosts
+}
+
+func (p *standardHostPool) Assign(hosts []string) {
+	p.hosts = hosts
+	p.Init(hosts)
 }
