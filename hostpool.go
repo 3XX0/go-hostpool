@@ -37,6 +37,7 @@ type HostPool interface {
 	Get() HostPoolResponse
 	ResetAll()
 	Hosts() []string
+	Init(hosts []string)
 }
 
 type standardHostPool struct {
