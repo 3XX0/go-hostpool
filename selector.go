@@ -24,6 +24,12 @@ type standardSelector struct {
 }
 
 func (s *standardSelector) Init(hosts []string) {
+	s.Lock()
+	s.initInternal(hosts)
+	s.Unlock()
+}
+
+func (s *standardSelector) initInternal(hosts []string) {
 	s.hosts = make(map[string]*hostEntry, len(hosts))
 	s.hostList = make([]*hostEntry, len(hosts))
 	s.initialRetryDelay = time.Duration(30) * time.Second

@@ -66,7 +66,7 @@ func NewEpsilonGreedy(decayDuration time.Duration, calc EpsilonValueCalculator) 
 
 func (s *epsilonGreedySelector) Init(hosts []string) {
 	s.Lock()
-	s.Selector.Init(hosts)
+	s.Selector.(*standardSelector).initInternal(hosts)
 	// allocate structures
 	for _, h := range s.Selector.(*standardSelector).hostList {
 		h.epsilonCounts = make([]int64, epsilonBuckets)
