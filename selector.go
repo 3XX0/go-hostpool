@@ -67,6 +67,7 @@ func (s *standardSelector) getRoundRobin() string {
 	}
 
 	// all hosts are down. re-add them
+	log.Println("all hosts are down, resetting ...")
 	s.doResetAll()
 	s.nextHostIndex = 0
 	return s.hostList[0].host
